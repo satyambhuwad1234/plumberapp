@@ -18,10 +18,7 @@ require("dotenv").config();
 
 const app = express();
 // ✅ Use CORS with your frontend domain (Hostinger)
-app.use(cors({
-  origin: 'https://plumber.metiermedia.com',
-  credentials: true,
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
 
