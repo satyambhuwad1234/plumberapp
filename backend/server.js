@@ -17,8 +17,14 @@ const twilio = require("twilio");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+// ✅ Use CORS with your frontend domain (Hostinger)
+app.use(cors({
+  origin: "https://yourfrontenddomain.com", // 🔁 Replace with your actual domain (e.g., https://plumberapp.in)
+  credentials: true,
+}));
 app.use(bodyParser.json());
+
+
 
 
 
