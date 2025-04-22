@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# 🔹 API requests backend pe forward karein (Corrected to port 5000)
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^(.*)$ https://plumber.metiermedia.com:5000/$1 [P,L]
+
+# 🔹 Redirect all frontend requests to React build folder
+RewriteCond %{REQUEST_URI} !^/build/
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ /build/$1 [L,QSA]
+
+# 🔹 Ensure React routing works correctly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /build/index.html [L,QSA]
